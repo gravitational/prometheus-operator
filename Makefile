@@ -1,6 +1,7 @@
 SHELL=/bin/bash -o pipefail
 
 GO_PKG=github.com/coreos/prometheus-operator
+GRAVITATIONAL_REPO?=quay.io/gravitational/prometheus-operator
 REPO?=quay.io/coreos/prometheus-operator
 REPO_PROMETHEUS_CONFIG_RELOADER?=quay.io/coreos/prometheus-config-reloader
 REPO_PROMETHEUS_OPERATOR_LINT?=quay.io/coreos/prometheus-operator-lint
@@ -284,3 +285,11 @@ $(PO_DOCGEN_BINARY): $(shell find cmd/po-docgen -type f) $(TYPES_V1_TARGET)
 
 $(GOJSONTOYAML_BINARY):
 	@go install -mod=vendor github.com/brancz/gojsontoyaml
+
+################################################
+# Push operator image to quay.io/gravitational #
+################################################
+.PHONY: docker-push
+docker-push: .hack-operator-image
+	docker tag $(REPO):$(TAG) $(GRAVITATIONAL_REPO):$(TAG)
+	docker push $(GRAVITATIONAL_REPO):$(TAG)
