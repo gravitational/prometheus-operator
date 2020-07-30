@@ -134,7 +134,7 @@ func makeStatefulSet(am *monitoringv1.Alertmanager, old *appsv1.StatefulSet, con
 	} else if storageSpec.HostPath != nil {
 		hostPath := storageSpec.HostPath
 		statefulset.Spec.Template.Spec.Volumes = append(statefulset.Spec.Template.Spec.Volumes, v1.Volume{
-			Name: volumeName(p.Name),
+			Name: volumeName(am.Name),
 			VolumeSource: v1.VolumeSource{
 				HostPath: hostPath,
 			},
