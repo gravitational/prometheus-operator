@@ -13,6 +13,7 @@ require (
 	github.com/go-openapi/swag v0.19.4
 	github.com/gogo/protobuf v1.2.2-0.20190730201129-28a6bbf47e48
 	github.com/golang/protobuf v1.3.2
+	github.com/google/go-jsonnet v0.16.0 // indirect
 	github.com/hashicorp/go-version v1.1.0
 	github.com/improbable-eng/thanos v0.3.2
 	github.com/jsonnet-bundler/jsonnet-bundler v0.1.0
@@ -24,10 +25,10 @@ require (
 	github.com/prometheus/client_golang v1.1.0
 	github.com/prometheus/prometheus v2.3.2+incompatible
 	github.com/prometheus/tsdb v0.8.0 // indirect
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.4.0
 	golang.org/x/sync v0.0.0-20190423024810-112230192c58
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
-	gopkg.in/yaml.v2 v2.2.2
+	gopkg.in/yaml.v2 v2.2.4
 	k8s.io/api v0.0.0-20190918155943-95b840bb6a1f
 	k8s.io/apiextensions-apiserver v0.0.0-20190918161926-8f644eb6e783
 	k8s.io/apimachinery v0.0.0-20190913080033-27d36303b655
