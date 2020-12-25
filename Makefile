@@ -9,6 +9,7 @@ else
 endif
 
 GO_PKG=github.com/coreos/prometheus-operator
+GRAVITATIONAL_REPO?=quay.io/gravitational/prometheus-operator
 REPO?=quay.io/coreos/prometheus-operator
 REPO_PROMETHEUS_CONFIG_RELOADER?=quay.io/coreos/prometheus-config-reloader
 REPO_PROMETHEUS_OPERATOR_LINT?=quay.io/coreos/prometheus-operator-lint
@@ -249,3 +250,11 @@ $(TOOLS_BIN_DIR)/$(1):
 endef
 
 $(foreach binary,$(K8S_GEN_BINARIES),$(eval $(call _K8S_GEN_VAR_TARGET_,$(binary))))
+
+################################################
+# Push operator image to quay.io/gravitational #
+################################################
+.PHONY: docker-push
+docker-push: .hack-operator-image
+	docker tag $(REPO):$(TAG) $(GRAVITATIONAL_REPO):$(TAG)
+	docker push $(GRAVITATIONAL_REPO):$(TAG)
